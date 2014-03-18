@@ -46,6 +46,7 @@ class MssqlPlatform extends DefaultPlatform
         $this->setSchemaDomainMapping(new Domain(PropelTypes::OBJECT, "VARCHAR(MAX)"));
         $this->setSchemaDomainMapping(new Domain(PropelTypes::PHP_ARRAY, "VARCHAR(MAX)"));
         $this->setSchemaDomainMapping(new Domain(PropelTypes::ENUM, "TINYINT"));
+        $this->setSchemaDomainMapping(new Domain(PropelTypes::VARCHAR, "NVARCHAR"));
     }
 
     public function getMaxColumnNameLength()
@@ -172,7 +173,7 @@ END
 
     public function hasSize($sqlType)
     {
-        return !("INT" == $sqlType || "TEXT" == $sqlType);
+        return !("INT" == $sqlType || "TEXT" == $sqlType || "DATETIME" == $sqlType);
     }
 
     public function quoteIdentifier($text)
