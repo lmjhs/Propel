@@ -147,7 +147,7 @@ class MssqlSchemaParser extends BaseSchemaParser
             $column->getDomain()->replaceSize($precision);
             $column->getDomain()->replaceScale($scale);
             if ($default !== null) {
-                $column->getDomain()->setDefaultValue(new ColumnDefaultValue($default, ColumnDefaultValue::TYPE_VALUE));
+                $column->getDomain()->setDefaultValue(new ColumnDefaultValue($default, ColumnDefaultValue::TYPE_EXPR));
             }
             $column->setAutoIncrement($autoincrement);
             $column->setNotNull(!$is_nullable);
