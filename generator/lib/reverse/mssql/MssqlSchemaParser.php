@@ -123,7 +123,7 @@ class MssqlSchemaParser extends BaseSchemaParser
 
             $name = $this->cleanDelimitedIdentifiers($row['COLUMN_NAME']);
             $type = $row['TYPE_NAME'];
-            $size = $row['LENGTH'];
+            $length = $row['LENGTH'];
             $is_nullable = $row['NULLABLE'];
             $default = $row['COLUMN_DEF'];
             $precision = $row['PRECISION'];
@@ -144,7 +144,7 @@ class MssqlSchemaParser extends BaseSchemaParser
             $column->setDomainForType($propelType);
             // We may want to provide an option to include this:
             // $column->getDomain()->replaceSqlType($type);
-            $column->getDomain()->replaceSize($size);
+            $column->getDomain()->replaceSize($precision);
             $column->getDomain()->replaceScale($scale);
             if ($default !== null) {
                 $column->getDomain()->setDefaultValue(new ColumnDefaultValue($default, ColumnDefaultValue::TYPE_VALUE));
